@@ -1,12 +1,32 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   opacity: 1;
-  padding: 24px 100px;
+  height: 80px;
+  padding-inline: 100px;
+  align-items: center;
 }
 
-.header--loading {
-  border-bottom: 1px black solid;
+.header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: #000000;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    transform 400ms ease,
+    opacity 150ms ease;
+}
+
+.header--loading::after {
+  opacity: 1;
+  transform: scaleX(var(--header-loading-progress));
 }
 
 .header__cart {
