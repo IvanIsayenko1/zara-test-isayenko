@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useHome } from "@/context/home-context";
+import { useSmartphoneDetail } from "@/context/smartphone-detail-context";
 import arrowLeft from "@/assets/icons/arrow-left.svg";
 
 import "./smartphone-detail.css";
 
 export default function SmartphoneDetail() {
-  const { selectedPhoneId, closePhone } = useHome();
+  const { selectedPhoneId, closePhone } = useSmartphoneDetail();
   const isOpen = Boolean(selectedPhoneId);
 
   return (
