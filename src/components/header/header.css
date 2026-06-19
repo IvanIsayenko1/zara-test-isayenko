@@ -1,24 +1,26 @@
 .header {
-  height: 80px;
   display: flex;
   justify-content: space-between;
   opacity: 1;
   padding: 24px 100px;
 }
 
-.cart-container {
+.header--loading {
+  border-bottom: 1px black solid;
+}
+
+.header__cart {
   display: flex;
   align-items: center;
-  height: 26px;
   opacity: 1;
   padding-top: 4px;
   padding-bottom: 4px;
   gap: 6px;
 }
 
-.cart-count {
+.header__cart-count {
+  font-family: Helvetica Neue;
   font-weight: 300;
-  font-style: Light;
   font-size: 16px;
   line-height: 16px;
   letter-spacing: 0%;
