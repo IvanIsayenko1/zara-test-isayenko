@@ -1,0 +1,110 @@
+.smartphone-card {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  height: 344px;
+  padding: 16px;
+  border-right: 0.5px solid #000000;
+  border-bottom: 0.5px solid #000000;
+  border-top: 0.5px solid #000000;
+  border-left: 0.5px solid #000000;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.smartphone-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000000;
+  transform: translateY(100%);
+  transition: transform 400ms ease-out;
+}
+
+.smartphone-card:hover::before {
+  transform: translateY(0);
+}
+
+.smartphone-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.smartphone-card__image-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 257px;
+  padding: 24px;
+}
+
+.smartphone-card__image-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.smartphone-card__image {
+  object-fit: contain;
+}
+
+.smartphone-card__footer {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.smartphone-card__footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.smartphone-card__brand {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #79736d;
+  transition: color 250ms ease;
+}
+
+.smartphone-card__model {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #000000;
+  transition: color 250ms ease;
+}
+
+.smartphone-card__price {
+  display: flex;
+  align-items: flex-end;
+
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  text-transform: capitalize;
+  color: #000000;
+  transition: color 250ms ease;
+}
+
+.smartphone-card:hover .smartphone-card__brand,
+.smartphone-card:hover .smartphone-card__model,
+.smartphone-card:hover .smartphone-card__price {
+  color: #ffffff;
+}
