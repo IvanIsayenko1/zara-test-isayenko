@@ -1,0 +1,20 @@
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  padding: 12px 100px 12px 100px;
+  gap: 12px;
+}
+
+.filter-bar__results {
+  display: flex;
+  justify-content: space-between;
+  height: 24px;
+  opacity: 1;
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+}
