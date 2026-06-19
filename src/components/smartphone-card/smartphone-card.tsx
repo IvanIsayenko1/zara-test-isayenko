@@ -1,10 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import "./smartphone-card.css";
 import phonePlaceholder from "../../assets/placeholders/phone-placeholder.png";
+import { useHome } from "@/context/home-context";
+// import Link from "next/link";
 
 export function SmarthponeCard() {
+  const { openPhone } = useHome();
+
+  const handleClick = () => {
+    openPhone("random id");
+  };
+
   return (
-    <div className="smartphone-card">
+    // <Link href="/smartphone/randomId" className="smartphone-card">
+    <div className="smartphone-card" onClick={handleClick}>
       <div className="smartphone-card__image-wrapper">
         <div className="smartphone-card__image-inner">
           <Image
@@ -23,5 +34,6 @@ export function SmarthponeCard() {
         <span className="smartphone-card__price">1219 EUR</span>
       </div>
     </div>
+    // </Link>
   );
 }
