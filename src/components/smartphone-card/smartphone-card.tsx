@@ -2,25 +2,23 @@
 
 import Image from "next/image";
 import "./smartphone-card.css";
-import phonePlaceholder from "../../assets/placeholders/phone-placeholder.png";
-import { useHome } from "@/context/home-context";
-// import Link from "next/link";
+import { useSmartphoneDetail } from "@/context/smartphone-detail-context";
+import type { SmarthponeCardProps } from "./smartphone-card.types";
 
-export function SmarthponeCard() {
-  const { openPhone } = useHome();
+export function SmarthponeCard({ product }: SmarthponeCardProps) {
+  const { openPhone } = useSmartphoneDetail();
 
   const handleClick = () => {
-    openPhone("random id");
+    openPhone(product.id);
   };
 
   return (
-    // <Link href="/smartphone/randomId" className="smartphone-card">
     <div className="smartphone-card" onClick={handleClick}>
       <div className="smartphone-card__image-wrapper">
         <div className="smartphone-card__image-inner">
           <Image
-            src={phonePlaceholder}
-            alt="Photo of the smartphone"
+            src={product.imageUrl}
+            alt={`Photo of ${product.name}`}
             className="smartphone-card__image"
             fill
           />
@@ -28,12 +26,13 @@ export function SmarthponeCard() {
       </div>
       <div className="smartphone-card__footer">
         <div className="smartphone-card__footer__content">
-          <span className="smartphone-card__brand">apple</span>
-          <span className="smartphone-card__model">iphone 15 pro</span>
+          <span className="smartphone-card__brand">{product.brand}</span>
+          <span className="smartphone-card__model">{product.name}</span>
         </div>
-        <span className="smartphone-card__price">1219 EUR</span>
+        <span className="smartphone-card__price">
+          {product.basePrice} EUR
+        </span>
       </div>
     </div>
-    // </Link>
   );
 }
