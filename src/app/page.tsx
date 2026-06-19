@@ -1,5 +1,5 @@
-import HomeContent from "@/components/home-content/home-content";
+import SmartphoneCatalog from "@/components/smartphone-catalog/smartphone-catalog";
 
 export default function Home() {
-  return <HomeContent />;
+  return <SmartphoneCatalog />;
 }
