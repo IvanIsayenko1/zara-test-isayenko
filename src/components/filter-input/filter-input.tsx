@@ -43,7 +43,7 @@ export function FilterInput() {
           aria-label="Clear search"
           onClick={() => setFilterValue("")}
         >
-          <Image src={x} alt="" width={8} height={8} />
+          <Image src={x} alt="" width={8} height={8} loading="eager" />
         </button>
       )}
     </div>

@@ -50,6 +50,8 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
               alt={product.name}
               className="product-detail__image"
               fill
+              sizes="510px"
+              loading="eager"
             />
           </div>
           <div className="product-detail__summary">

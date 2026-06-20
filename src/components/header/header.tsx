@@ -21,10 +21,10 @@ export default function Header() {
       style={loadingStyle}
     >
       <Link href="/">
-        <Image src={logo} alt="Logo" width={74} height={24} />
+        <Image src={logo} alt="Logo" width={74} height={24} loading="eager" />
       </Link>
       <div className="header__cart">
-        <Image src={bag} alt="Shopping Bag" width={18} height={18} />
+        <Image src={bag} alt="Shopping Bag" width={18} height={18} loading="eager" />
         <span className="header__cart-count">{0}</span>
       </div>
     </header>

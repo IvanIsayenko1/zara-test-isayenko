@@ -16,7 +16,7 @@ export default function ProductDetailNavigation() {
     <div className="product-detail-navigation">
       <Link className="product-detail-navigation__back" href="/" onClick={navigateBackHandler}>
         <div className="product-detail-navigation__back__icon">
-          <Image src={arrowLeft} alt="Navigate back" width={5} height={8} />
+          <Image src={arrowLeft} alt="Navigate back" width={5} height={8} loading="eager" />
         </div>
         back
       </Link>

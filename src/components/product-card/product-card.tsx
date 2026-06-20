@@ -24,6 +24,8 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={`Photo of ${product.name}`}
             className="product-card__image"
             fill
+            sizes="344px"
+            loading="eager"
           />
         </div>
       </div>

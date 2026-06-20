@@ -9,8 +9,8 @@ export default function SimilarProducts({ product }: { product: ProductDetail })
     <div className="similar-products">
       <div className="similar-products__title">SIMILAR PRODUCTS</div>
       <div className="similar-products__carousel">
-        {product.similarProducts.map((item) => (
-          <ProductCard product={item} key={item.id} />
+        {product.similarProducts.map((item, index) => (
+          <ProductCard product={item} key={item.id + index} />
         ))}
       </div>
     </div>
