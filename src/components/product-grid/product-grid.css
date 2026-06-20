@@ -1,4 +1,8 @@
 .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 344px), 344px));
+  align-content: start;
+  justify-content: start;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
@@ -6,16 +10,4 @@
   padding-top: 48px;
   padding-inline: 100px;
   padding-bottom: 100px;
-}
-
-.product-grid__cards {
-  --product-card-size: 344px;
-
-  display: grid;
-  grid-template-columns: repeat(
-    var(--product-grid-columns),
-    var(--product-card-size)
-  );
-  align-content: start;
-  width: calc(var(--product-grid-columns) * var(--product-card-size));
 }
