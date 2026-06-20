@@ -9,8 +9,9 @@ import { useLoading } from "@/context/loading-context";
 import Link from "next/link";
 
 export default function Header() {
-  const { loadingProgress } = useLoading();
+  const { loadingProgress, setIsComplete } = useLoading();
 
+  console.log("loadingProgress", loadingProgress);
   const loadingStyle = {
     "--header-loading-progress": loadingProgress / 100,
   } as CSSProperties;
@@ -20,7 +21,12 @@ export default function Header() {
       className={`header ${loadingProgress > 0 ? "header--loading" : ""}`}
       style={loadingStyle}
     >
-      <Link href="/">
+      <Link
+        href="/"
+        onClick={() => {
+          setIsComplete(true);
+        }}
+      >
         <Image src={logo} alt="Logo" width={74} height={24} loading="eager" />
       </Link>
       <div className="header__cart">

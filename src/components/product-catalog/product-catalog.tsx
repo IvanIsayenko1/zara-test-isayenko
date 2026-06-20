@@ -15,6 +15,7 @@ export default function ProductCatalog({ products }: { products: Product[] }) {
 
   useEffect(() => {
     setProducts(products);
+    console.log(isComplete);
     if (!isComplete) {
       simulateLoading();
     }

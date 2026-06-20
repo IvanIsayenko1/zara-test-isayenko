@@ -44,7 +44,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       loadingResetTimeoutRef.current = null;
       setIsComplete(true);
     }, LOADING_RESET_DELAY);
-  }, [setLoadingProgressState, loadingResetTimeoutRef]);
+  }, [setLoadingProgressState, loadingResetTimeoutRef, setIsComplete]);
 
   const value = useMemo(
     () => ({
