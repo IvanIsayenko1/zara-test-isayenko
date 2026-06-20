@@ -2,7 +2,6 @@ import "./globals.css";
 import Header from "../components/header/header";
 import { LoadingProvider } from "@/context/loading-context";
 import { ProductsProvider } from "@/context/products-context";
-import { SmartphoneDetailProvider } from "@/context/smartphone-detail-context";
 
 export default function RootLayout({
   children,
@@ -14,10 +13,8 @@ export default function RootLayout({
       <body>
         <LoadingProvider>
           <ProductsProvider>
-            <SmartphoneDetailProvider>
-              <Header />
-              <main>{children}</main>
-            </SmartphoneDetailProvider>
+            <Header />
+            <main>{children}</main>
           </ProductsProvider>
         </LoadingProvider>
       </body>

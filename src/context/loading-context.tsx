@@ -12,47 +12,52 @@ import {
 
 type LoadingProgress = 0 | 50 | 100;
 
-const LOADING_RESET_DELAY = 500;
+const LOADING_COMPLETE_DELAY = 500;
+const LOADING_RESET_DELAY = 800;
 
 type LoadingContextValue = {
   loadingProgress: LoadingProgress;
   setLoadingProgress: (progress: LoadingProgress) => void;
+  simulateLoading: () => void;
+  isComplete: boolean;
+  setIsComplete: (isComplete: boolean) => void;
 };
 
 const LoadingContext = createContext<LoadingContextValue | null>(null);
 
 export function LoadingProvider({ children }: { children: ReactNode }) {
-  const [loadingProgress, setLoadingProgressState] =
-    useState<LoadingProgress>(0);
+  const [loadingProgress, setLoadingProgressState] = useState<LoadingProgress>(0);
   const loadingResetTimeoutRef = useRef<number | null>(null);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const setLoadingProgress = useCallback((progress: LoadingProgress) => {
-    if (loadingResetTimeoutRef.current) {
-      window.clearTimeout(loadingResetTimeoutRef.current);
+  const simulateLoading = useCallback(() => {
+    setIsComplete(false);
+    setLoadingProgressState(50);
+
+    loadingResetTimeoutRef.current = window.setTimeout(() => {
+      setLoadingProgressState(100);
       loadingResetTimeoutRef.current = null;
-    }
+    }, LOADING_COMPLETE_DELAY);
 
-    setLoadingProgressState(progress);
-
-    if (progress === 100) {
-      loadingResetTimeoutRef.current = window.setTimeout(() => {
-        setLoadingProgressState(0);
-        loadingResetTimeoutRef.current = null;
-      }, LOADING_RESET_DELAY);
-    }
-  }, []);
+    loadingResetTimeoutRef.current = window.setTimeout(() => {
+      setLoadingProgressState(0);
+      loadingResetTimeoutRef.current = null;
+      setIsComplete(true);
+    }, LOADING_RESET_DELAY);
+  }, [setLoadingProgressState, loadingResetTimeoutRef]);
 
   const value = useMemo(
     () => ({
       loadingProgress,
-      setLoadingProgress,
+      isComplete,
+      simulateLoading,
+      setIsComplete,
+      setLoadingProgress: setLoadingProgressState,
     }),
-    [loadingProgress, setLoadingProgress]
+    [loadingProgress, isComplete, simulateLoading, setIsComplete, setLoadingProgressState]
   );
 
-  return (
-    <LoadingContext.Provider value={value}>{children}</LoadingContext.Provider>
-  );
+  return <LoadingContext.Provider value={value}>{children}</LoadingContext.Provider>;
 }
 
 export function useLoading() {

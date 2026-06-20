@@ -1,4 +1,4 @@
-.smartphone-catalog {
+.product-catalog {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -12,7 +12,7 @@
     visibility 0ms linear 500ms;
 }
 
-.smartphone-catalog--open {
+.product-catalog--open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

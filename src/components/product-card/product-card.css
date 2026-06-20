@@ -1,11 +1,11 @@
-.smartphone-card {
+.product-card {
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 100%;
-  min-width: 0;
+  flex: 0 0 344px;
+  width: 344px;
   height: 344px;
   padding: 16px;
   border-right: 0.5px solid #000000;
@@ -17,7 +17,7 @@
   text-decoration: none;
 }
 
-.smartphone-card::before {
+.product-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -27,16 +27,16 @@
   transition: transform 400ms ease-out;
 }
 
-.smartphone-card:hover::before {
+.product-card:hover::before {
   transform: translateY(0);
 }
 
-.smartphone-card > * {
+.product-card > * {
   position: relative;
   z-index: 1;
 }
 
-.smartphone-card__image-wrapper {
+.product-card__image-wrapper {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -45,29 +45,29 @@
   padding: 24px;
 }
 
-.smartphone-card__image-inner {
+.product-card__image-inner {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.smartphone-card__image {
+.product-card__image {
   object-fit: contain;
 }
 
-.smartphone-card__footer {
+.product-card__footer {
   display: flex;
   gap: 8px;
   justify-content: space-between;
 }
 
-.smartphone-card__footer__content {
+.product-card__meta {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.smartphone-card__brand {
+.product-card__brand {
   font-family: Helvetica Neue;
   font-weight: 300;
   font-size: 10px;
@@ -78,7 +78,7 @@
   transition: color 250ms ease;
 }
 
-.smartphone-card__model {
+.product-card__name {
   font-family: Helvetica Neue;
   font-weight: 300;
   font-size: 12px;
@@ -89,7 +89,7 @@
   transition: color 250ms ease;
 }
 
-.smartphone-card__price {
+.product-card__price {
   display: flex;
   align-items: flex-end;
 
@@ -104,8 +104,8 @@
   transition: color 250ms ease;
 }
 
-.smartphone-card:hover .smartphone-card__brand,
-.smartphone-card:hover .smartphone-card__model,
-.smartphone-card:hover .smartphone-card__price {
+.product-card:hover .product-card__brand,
+.product-card:hover .product-card__name,
+.product-card:hover .product-card__price {
   color: #ffffff;
 }

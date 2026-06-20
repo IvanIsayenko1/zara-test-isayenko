@@ -1,5 +1,8 @@
-import SmartphoneCatalog from "@/components/smartphone-catalog/smartphone-catalog";
+import ProductCatalog from "@/components/product-catalog/product-catalog";
+import { fetchProducts } from "@/services/products";
 
-export default function Home() {
-  return <SmartphoneCatalog />;
+export default async function Home() {
+  const products = await fetchProducts({});
+
+  return <ProductCatalog products={products} />;
 }
