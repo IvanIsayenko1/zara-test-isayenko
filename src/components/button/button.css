@@ -7,30 +7,13 @@
   border: none;
   font: var(--app-text-light-12-button);
   letter-spacing: 8%;
+  transition: all 0.3s ease;
   text-align: center;
   vertical-align: middle;
-  transition: all 0.3s ease;
 }
 
 .button:hover {
   cursor: pointer;
-}
-
-.button--primary:hover {
-  background-color: #282624;
-}
-
-.button--outlined:hover {
-  border-color: #282624;
-  color: #504d49;
-}
-
-.button--primary:active {
-  background-color: #363331;
-}
-
-.button--outlined:active {
-  border-color: #363331;
 }
 
 .button--primary {
@@ -46,6 +29,23 @@
   color: #1b1a18;
   background-color: transparent;
   text-decoration: none;
+}
+
+.button--primary:hover {
+  background-color: #282624;
+}
+
+.button--outlined:hover {
+  color: #504d49;
+  border-color: #282624;
+}
+
+.button--primary:active {
+  background-color: #363331;
+}
+
+.button--outlined:active {
+  border-color: #363331;
 }
 
 .button--danger {
