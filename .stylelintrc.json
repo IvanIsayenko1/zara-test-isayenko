@@ -1,0 +1,62 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "selector-class-pattern": [
+      "^[a-z][a-z0-9-]*(?:__[a-z0-9-]+)*(?:--[a-z0-9-]+)?$",
+      {
+        "message": "Expected class selector to use kebab-case or BEM naming"
+      }
+    ],
+    "order/properties-order": [
+      [
+        "position",
+        "inset",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "z-index",
+
+        "display",
+        "flex",
+        "flex-direction",
+        "align-items",
+        "justify-content",
+        "gap",
+
+        "width",
+        "min-width",
+        "max-width",
+        "height",
+        "min-height",
+        "max-height",
+
+        "padding",
+        "padding-inline",
+        "margin",
+
+        "border",
+        "background",
+        "color",
+
+        "font",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "line-height",
+        "letter-spacing",
+
+        "opacity",
+        "visibility",
+        "overflow",
+        "cursor",
+        "transition",
+        "transform"
+      ],
+      {
+        "unspecified": "bottomAlphabetical"
+      }
+    ]
+  }
+}

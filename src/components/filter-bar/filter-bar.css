@@ -1,21 +1,21 @@
 .filter-bar {
-  height: 114px;
   display: flex;
   flex-direction: column;
-  opacity: 1;
-  padding-inline: var(--app-padding-inline);
-  padding-bottom: 12px;
-  gap: 12px;
   justify-content: flex-end;
+  gap: 12px;
+  height: 114px;
+  padding-inline: var(--app-padding-inline);
+  opacity: 1;
+  padding-bottom: 12px;
 }
 
 .filter-bar__results {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   height: 24px;
-  opacity: 1;
   font: var(--app-text-light-12);
   letter-spacing: var(--app-letter-spacing-none);
+  opacity: 1;
   text-transform: uppercase;
 }

@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
 }
 
 .similar-products__title {
@@ -15,10 +15,9 @@
 .similar-products__carousel {
   display: flex;
   width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: scroll hidden;
   padding-bottom: 40px;
-  scrollbar-color: #cccccc #000000;
+  scrollbar-color: #ccc #000;
   scrollbar-width: thin;
 }
 
@@ -27,11 +26,11 @@
 }
 
 .similar-products__carousel::-webkit-scrollbar-track {
-  background: #cccccc;
   height: 1px;
+  background: #ccc;
 }
 
 .similar-products__carousel::-webkit-scrollbar-thumb {
-  background: #000000;
   height: 1px;
+  background: #000;
 }

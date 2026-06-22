@@ -1,28 +1,29 @@
 .product-detail-navigation {
-  padding-top: 12px;
-  padding-bottom: 12px;
   padding-inline: var(--app-padding-inline);
-
   font: var(--app-text-light-12);
   letter-spacing: var(--app-letter-spacing-none);
+  padding-bottom: 12px;
+  padding-top: 12px;
   text-transform: uppercase;
 }
+
 .product-detail-navigation__back {
   display: flex;
   align-items: center;
   gap: 4px;
   width: fit-content;
+  color: #000;
   text-decoration: none;
-  color: #000000;
 }
+
 .product-detail-navigation__back:hover {
   cursor: pointer;
 }
 
 .product-detail-navigation__back__icon {
-  width: 20px;
-  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  height: 20px;
 }

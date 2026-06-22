@@ -3,7 +3,7 @@
 }
 
 :root {
-  --app-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --app-font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   --app-letter-spacing-none: 0;
   --app-padding-inline: 16px;
   --breakpoint-mobile: 394px;
@@ -20,13 +20,13 @@
   --app-text-regular-14: 400 14px / 100% var(--app-font-family);
 }
 
-@media (min-width: 395px) {
+@media (width >= 395px) {
   :root {
     --app-padding-inline: 40px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   :root {
     --app-padding-inline: 100px;
   }
@@ -34,16 +34,16 @@
 
 html,
 body {
-  font-family: Helvetica, Arial, sans-serif;
   height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  font-family: var(--app-font-family);
   max-width: 1920px;
   margin: 0 auto;
+  font-family: var(--app-font-family);
   overflow: hidden;
 }
 

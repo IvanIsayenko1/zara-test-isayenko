@@ -1,33 +1,33 @@
 .product-card {
   --product-card-min-size: 344px;
 
-  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
   min-width: min(100%, var(--product-card-min-size));
-  min-height: var(--product-card-min-size);
   height: var(--product-card-min-size);
+  min-height: var(--product-card-min-size);
   padding: 16px;
-  border-right: 0.5px solid #000000;
-  border-bottom: 0.5px solid #000000;
-  border-top: 0.5px solid #000000;
-  border-left: 0.5px solid #000000;
   overflow: hidden;
   cursor: pointer;
+  border-bottom: 0.5px solid #000;
+  border-left: 0.5px solid #000;
+  border-right: 0.5px solid #000;
+  border-top: 0.5px solid #000;
+  box-sizing: border-box;
   text-decoration: none;
 }
 
 .product-card::before {
-  content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #000000;
-  transform: translateY(100%);
+  background: #000;
   transition: transform 400ms ease-out;
+  transform: translateY(100%);
+  content: "";
 }
 
 .product-card:hover::before {
@@ -40,13 +40,13 @@
 }
 
 .product-card__image-wrapper {
-  box-sizing: border-box;
-  flex: 1;
-  min-height: 0;
   display: flex;
+  flex: 1;
   justify-content: center;
   width: 100%;
+  min-height: 0;
   padding: 24px;
+  box-sizing: border-box;
 }
 
 .product-card__image-inner {
@@ -61,8 +61,8 @@
 
 .product-card__footer {
   display: flex;
-  gap: 8px;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .product-card__meta {
@@ -72,35 +72,34 @@
 }
 
 .product-card__brand {
+  color: #79736d;
   font: var(--app-text-light-10);
   letter-spacing: var(--app-letter-spacing-none);
-  text-transform: uppercase;
-  color: #79736d;
   transition: color 250ms ease;
+  text-transform: uppercase;
 }
 
 .product-card__name {
+  color: #000;
   font: var(--app-text-light-12);
   letter-spacing: var(--app-letter-spacing-none);
-  text-transform: uppercase;
-  color: #000000;
   transition: color 250ms ease;
+  text-transform: uppercase;
 }
 
 .product-card__price {
   display: flex;
   align-items: flex-end;
-
+  color: #000;
   font: var(--app-text-light-12);
   letter-spacing: var(--app-letter-spacing-none);
+  transition: color 250ms ease;
   text-align: right;
   text-transform: capitalize;
-  color: #000000;
-  transition: color 250ms ease;
 }
 
 .product-card:hover .product-card__brand,
 .product-card:hover .product-card__name,
 .product-card:hover .product-card__price {
-  color: #ffffff;
+  color: #fff;
 }

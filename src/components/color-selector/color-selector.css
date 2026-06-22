@@ -11,9 +11,9 @@
 }
 
 .color-selector__options {
-  gap: 16px;
   display: flex;
   flex-direction: row;
+  gap: 16px;
 }
 
 .color-selector__options-container {
@@ -26,10 +26,10 @@
   width: 23px;
   height: 23px;
   padding: 1px;
-  border: 1px solid #cccccc;
-  border-width: 1px;
+  border: 1px solid #ccc;
   cursor: pointer;
   transition: border 0.3s ease;
+  border-width: 1px;
 }
 
 .color-selector__swatch {
@@ -39,7 +39,7 @@
 
 .color-selector__option:hover,
 .color-selector__option--selected {
-  border: 1px solid #000000;
+  border: 1px solid #000;
 }
 
 .color-selector__selected {

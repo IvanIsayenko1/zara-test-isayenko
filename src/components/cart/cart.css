@@ -1,44 +1,43 @@
 .cart {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: 0;
   height: 100%;
+  min-height: 0;
   opacity: 0;
-  overflow: hidden;
   visibility: hidden;
-  pointer-events: none;
+  overflow: hidden;
   transition:
     opacity 500ms ease,
     visibility 0ms linear 500ms;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 
 .cart--open {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
   transition:
     opacity 500ms ease,
     visibility 0ms linear 0ms;
+  pointer-events: auto;
 }
 
 .cart__content {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  gap: 44px;
   min-height: 0;
   overflow-y: auto;
   padding-top: 44px;
-  gap: 44px;
-  display: flex;
-  flex-direction: column;
 }
 
 .cart__count {
-  padding-top: 12px;
-  padding-bottom: 12px;
   padding-inline: var(--app-padding-inline);
-
   font: var(--app-text-light-24);
   letter-spacing: var(--app-letter-spacing-none);
+  padding-bottom: 12px;
+  padding-top: 12px;
   text-transform: uppercase;
 }
 

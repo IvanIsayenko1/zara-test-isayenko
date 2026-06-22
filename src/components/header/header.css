@@ -1,27 +1,27 @@
 .header {
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  opacity: 1;
   height: 80px;
   padding-inline: var(--app-padding-inline);
-  align-items: center;
+  opacity: 1;
 }
 
 .header::after {
-  content: "";
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
   height: 1px;
-  background: #000000;
+  background: #000;
   opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
   transition:
     transform 400ms ease,
     opacity 150ms ease;
+  transform: scaleX(0);
+  content: "";
+  transform-origin: left;
 }
 
 .header--loading::after {
@@ -32,10 +32,10 @@
 .header__cart {
   display: flex;
   align-items: center;
-  opacity: 1;
-  padding-top: 4px;
-  padding-bottom: 4px;
   gap: 6px;
+  opacity: 1;
+  padding-bottom: 4px;
+  padding-top: 4px;
   text-decoration: none;
 }
 
@@ -67,9 +67,9 @@
 }
 
 .header__cart-count {
+  color: #000;
   font: var(--app-text-light-16);
   line-height: 16px;
   letter-spacing: var(--app-letter-spacing-none);
   text-transform: uppercase;
-  color: #000000;
 }
