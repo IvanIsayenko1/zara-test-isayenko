@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../components/header/header";
 import { LoadingProvider } from "@/context/loading-context";
 import { ProductsProvider } from "@/context/products-context";
+import { CartProvider } from "@/context/cart-context";
 
 export default function RootLayout({
   children,
@@ -13,8 +14,10 @@ export default function RootLayout({
       <body>
         <LoadingProvider>
           <ProductsProvider>
-            <Header />
-            <main>{children}</main>
+            <CartProvider>
+              <Header />
+              <main>{children}</main>
+            </CartProvider>
           </ProductsProvider>
         </LoadingProvider>
       </body>

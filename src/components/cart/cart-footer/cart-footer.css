@@ -1,0 +1,36 @@
+.cart-footer {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding-top: 24px;
+  padding-right: 100px;
+  padding-bottom: 56px;
+  padding-left: 100px;
+}
+
+.cart-footer a {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.cart-footer__end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+.cart-footer__end__total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+}

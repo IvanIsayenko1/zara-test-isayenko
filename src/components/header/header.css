@@ -36,6 +36,34 @@
   padding-top: 4px;
   padding-bottom: 4px;
   gap: 6px;
+  text-decoration: none;
+}
+
+.header__cart-icon {
+  position: relative;
+  display: inline-flex;
+  width: 13px;
+  height: 16px;
+}
+
+.header__cart-icon-image {
+  position: absolute;
+  inset: 0;
+  transition: opacity 180ms ease;
+}
+
+.header__cart-icon-image--filled {
+  opacity: 0;
+}
+
+.header__cart:hover .header__cart-icon-image:not(.header__cart-icon-image--filled),
+.header__cart:focus-visible .header__cart-icon-image:not(.header__cart-icon-image--filled) {
+  opacity: 0;
+}
+
+.header__cart:hover .header__cart-icon-image--filled,
+.header__cart:focus-visible .header__cart-icon-image--filled {
+  opacity: 1;
 }
 
 .header__cart-count {
@@ -45,4 +73,5 @@
   line-height: 16px;
   letter-spacing: 0%;
   text-transform: uppercase;
+  color: #000000;
 }

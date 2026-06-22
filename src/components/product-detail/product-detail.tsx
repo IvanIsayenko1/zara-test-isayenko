@@ -11,16 +11,31 @@ import Button from "../button/button";
 import ProductDetailSpecs from "./specs/product-detail-specs";
 import SimilarProducts from "./similar-products/similar-products";
 import ProductDetailNavigation from "./navigation/product-detail-navigation";
+import { CartItem, useCart } from "@/context/cart-context";
+import { useRouter } from "next/navigation";
 
 export default function ProductDetail({ product }: { product: ProductDetailData }) {
+  const router = useRouter();
+
+  // context
   const { simulateLoading, isComplete, setIsComplete } = useLoading();
+  const { addToCart } = useCart();
+
+  // state
   const [price, setPrice] = useState<number | null>(null);
   const [storage, setStorage] = useState<string | null>(null);
-  const [color, setColor] = useState<string | null>(null);
+  const [colorHEX, setColorHEX] = useState<string | null>(null);
+
+  // computed
   const productColorImageUrl =
-    product.colorOptions.find((option) => option.hexCode === color)?.imageUrl ||
+    product.colorOptions.find((option) => option.hexCode === colorHEX)?.imageUrl ||
     product.colorOptions[0].imageUrl;
-  const isAddButtonDisabled = !storage || !color;
+  const isAddButtonDisabled = !storage || !colorHEX;
+
+  useEffect(() => {
+    setIsComplete(false);
+    simulateLoading();
+  }, [simulateLoading, setIsComplete]);
 
   const storageHandler = (value: string) => {
     const newPrice =
@@ -30,13 +45,24 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
   };
 
   const colorHandler = (value: string) => {
-    setColor(value);
+    setColorHEX(value);
   };
 
-  useEffect(() => {
-    setIsComplete(false);
-    simulateLoading();
-  }, [simulateLoading, setIsComplete]);
+  const addHandler = () => {
+    const productToAdd: CartItem = {
+      brand: product.brand,
+      name: product.name,
+      price: price!,
+      color: product.colorOptions.find((option) => option.hexCode === colorHEX)!.name,
+      storage: storage!,
+      id: product.id,
+      imageUrl: productColorImageUrl,
+    };
+
+    addToCart(productToAdd);
+
+    router.push("/cart");
+  };
 
   return (
     <div className={`product-detail ${isComplete ? "product-detail--open" : ""}`}>
@@ -82,7 +108,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
 
             <Button
               label="Añadir"
-              onClick={() => {}}
+              onClick={addHandler}
               variant="primary"
               disabled={isAddButtonDisabled}
             />
