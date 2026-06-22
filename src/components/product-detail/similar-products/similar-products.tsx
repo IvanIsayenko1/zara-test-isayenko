@@ -2,7 +2,7 @@
 
 import { ProductDetail } from "@/types/product";
 
-import { ProductCard } from "../../product-card/product-card";
+import { ProductCard } from "../../product-catalog/product-card/product-card";
 import "./similar-products.css";
 
 export default function SimilarProducts({ product }: { product: ProductDetail }) {

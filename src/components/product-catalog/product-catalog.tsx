@@ -6,9 +6,9 @@ import { useLoading } from "@/context/loading-context";
 import { useProducts } from "@/context/products-context";
 import { Product } from "@/types/product";
 
-import { FilterBar } from "../filter-bar/filter-bar";
-import { ProductGrid } from "../product-grid/product-grid";
+import { FilterBar } from "./filter-bar/filter-bar";
 import "./product-catalog.css";
+import { ProductGrid } from "./product-grid/product-grid";
 
 export default function ProductCatalog({ products }: { products: Product[] }) {
   const { setProducts } = useProducts();

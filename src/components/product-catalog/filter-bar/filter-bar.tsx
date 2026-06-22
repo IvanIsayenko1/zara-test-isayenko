@@ -1,7 +1,7 @@
 import { useProducts } from "@/context/products-context";
 
-import { FilterInput } from "../filter-input/filter-input";
 import "./filter-bar.css";
+import { FilterInput } from "./filter-input/filter-input";
 
 export function FilterBar() {
   const { products } = useProducts();

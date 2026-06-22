@@ -10,12 +10,12 @@ import { useLoading } from "@/context/loading-context";
 import type { ProductDetail as ProductDetailData } from "@/types/product";
 
 import Button from "../button/button";
-import ColorSelector from "../color-selector/color-selector";
-import StorageSelector from "../storage-selector/storage-selector";
+import ColorSelector from "./color-selector/color-selector";
 import ProductDetailNavigation from "./navigation/product-detail-navigation";
 import "./product-detail.css";
 import SimilarProducts from "./similar-products/similar-products";
 import ProductDetailSpecs from "./specs/product-detail-specs";
+import StorageSelector from "./storage-selector/storage-selector";
 
 export default function ProductDetail({ product }: { product: ProductDetailData }) {
   const router = useRouter();
