@@ -20,18 +20,6 @@
   --app-text-regular-14: 400 14px / 100% var(--app-font-family);
 }
 
-@media (width >= 395px) {
-  :root {
-    --app-padding-inline: 40px;
-  }
-}
-
-@media (width >= 1024px) {
-  :root {
-    --app-padding-inline: 100px;
-  }
-}
-
 html,
 body {
   height: 100%;
@@ -50,4 +38,16 @@ body {
 main {
   flex: 1;
   min-height: 0;
+}
+
+@media (width >= 395px) {
+  :root {
+    --app-padding-inline: 40px;
+  }
+}
+
+@media (width >= 1024px) {
+  :root {
+    --app-padding-inline: 100px;
+  }
 }

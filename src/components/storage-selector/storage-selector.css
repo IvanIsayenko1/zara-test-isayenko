@@ -28,13 +28,6 @@
   border-width: 1px;
 }
 
-@media (width <= 1024px) {
-  .storage-selector__option {
-    width: 89px;
-    height: 48px;
-  }
-}
-
 .storage-selector__option-label {
   font: var(--app-text-light-14);
   letter-spacing: var(--app-letter-spacing-none);
@@ -43,4 +36,11 @@
 
 .storage-selector__option--selected {
   border: 1px solid #000;
+}
+
+@media (width <= 1024px) {
+  .storage-selector__option {
+    width: 89px;
+    height: 48px;
+  }
 }
