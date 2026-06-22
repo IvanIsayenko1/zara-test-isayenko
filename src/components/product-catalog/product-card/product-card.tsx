@@ -3,22 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useLoading } from "@/context/loading-context";
-
 import "./product-card.css";
 import type { ProductCardProps } from "./product-card.types";
 
 export function ProductCard({ product }: ProductCardProps) {
-  const { setIsComplete } = useLoading();
-
   return (
-    <Link
-      className="product-card"
-      href={`/product/${product.id}`}
-      onClick={() => {
-        setIsComplete(false);
-      }}
-    >
+    <Link className="product-card" href={`/product/${product.id}`} data-testid="product-card">
       <div className="product-card__image-wrapper">
         <div className="product-card__image-inner">
           <Image
