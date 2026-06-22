@@ -27,22 +27,21 @@
   min-height: 0;
   overflow-y: auto;
   padding-top: 44px;
+  gap: 44px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart__count {
   padding-top: 12px;
-  padding-right: 100px;
   padding-bottom: 12px;
-  padding-left: 100px;
+  padding-inline: var(--app-padding-inline);
 
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-24);
+  letter-spacing: var(--app-letter-spacing-none);
   text-transform: uppercase;
 }
 
 .cart__items {
-  padding-inline: 100px;
+  padding-inline: var(--app-padding-inline);
 }

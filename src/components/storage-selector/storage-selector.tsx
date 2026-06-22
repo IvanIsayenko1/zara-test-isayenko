@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 import "./storage-selector.css";
 import type { StorageSelectorProps } from "./storage-selector.types";
-import { useState } from "react";
 
 export default function StorageSelector<Option extends string>({
   title,

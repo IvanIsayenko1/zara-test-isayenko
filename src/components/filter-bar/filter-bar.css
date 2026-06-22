@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   opacity: 1;
-  padding-inline: 100px;
+  padding-inline: var(--app-padding-inline);
   padding-bottom: 12px;
   gap: 12px;
   justify-content: flex-end;
@@ -15,10 +15,7 @@
   align-items: center;
   height: 24px;
   opacity: 1;
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-12);
+  letter-spacing: var(--app-letter-spacing-none);
   text-transform: uppercase;
 }

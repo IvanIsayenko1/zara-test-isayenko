@@ -1,8 +1,9 @@
-import "./globals.css";
-import Header from "../components/header/header";
+import { CartProvider } from "@/context/cart-context";
 import { LoadingProvider } from "@/context/loading-context";
 import { ProductsProvider } from "@/context/products-context";
-import { CartProvider } from "@/context/cart-context";
+
+import Header from "../components/header/header";
+import "./globals.css";
 
 export default function RootLayout({
   children,

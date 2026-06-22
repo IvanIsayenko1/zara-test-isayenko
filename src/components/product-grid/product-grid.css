@@ -1,6 +1,11 @@
 .product-grid {
+  --product-grid-card-min-width: 344px;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 344px), 344px));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--product-grid-card-min-width)), 1fr)
+  );
   align-content: start;
   justify-content: start;
   flex: 1;
@@ -8,6 +13,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding-top: 48px;
-  padding-inline: 100px;
+  padding-inline: var(--app-padding-inline);
   padding-bottom: 100px;
 }

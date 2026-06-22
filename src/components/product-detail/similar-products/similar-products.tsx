@@ -1,8 +1,9 @@
 "use client";
 
+import { ProductDetail } from "@/types/product";
+
 import { ProductCard } from "../../product-card/product-card";
 import "./similar-products.css";
-import { ProductDetail } from "@/types/product";
 
 export default function SimilarProducts({ product }: { product: ProductDetail }) {
   return (

@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+
+import { useLoading } from "@/context/loading-context";
+
 import "./product-card.css";
 import type { ProductCardProps } from "./product-card.types";
-import Link from "next/link";
-import { useLoading } from "@/context/loading-context";
 
 export function ProductCard({ product }: ProductCardProps) {
   const { setIsComplete } = useLoading();
@@ -24,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={`Photo of ${product.name}`}
             className="product-card__image"
             fill
-            sizes="344px"
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             loading="eager"
           />
         </div>

@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect } from "react";
-import { FilterBar } from "../filter-bar/filter-bar";
-import { ProductGrid } from "../product-grid/product-grid";
 
-import "./product-catalog.css";
 import { useLoading } from "@/context/loading-context";
 import { useProducts } from "@/context/products-context";
 import { Product } from "@/types/product";
+
+import { FilterBar } from "../filter-bar/filter-bar";
+import { ProductGrid } from "../product-grid/product-grid";
+import "./product-catalog.css";
 
 export default function ProductCatalog({ products }: { products: Product[] }) {
   const { setProducts } = useProducts();
   const { simulateLoading, isComplete } = useLoading();
 
+  // Set products and simulate loading state
   useEffect(() => {
     setProducts(products);
-    console.log(isComplete);
     if (!isComplete) {
       simulateLoading();
     }

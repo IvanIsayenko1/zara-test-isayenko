@@ -1,7 +1,9 @@
-import { useLoading } from "@/context/loading-context";
 import Image from "next/image";
 import Link from "next/link";
+
 import arrowLeft from "@/assets/icons/arrow-left.svg";
+import { useLoading } from "@/context/loading-context";
+
 import "./product-detail-navigation.css";
 
 export default function ProductDetailNavigation() {

@@ -2,14 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  max-width: 1200px;
 }
 
 .product-detail-specs__title {
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-20);
+  letter-spacing: var(--app-letter-spacing-none);
   text-transform: capitalize;
 }
 
@@ -39,11 +37,8 @@
 .product-detail-specs__spec__title {
   flex: 0 0 300px;
 
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-12);
+  letter-spacing: var(--app-letter-spacing-none);
   text-transform: uppercase;
 }
 
@@ -51,9 +46,15 @@
   flex: 1;
   min-width: 0;
 
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-12);
+  letter-spacing: var(--app-letter-spacing-none);
+}
+
+@media (max-width: 768px) {
+  .product-detail-specs__spec {
+    gap: 12px;
+  }
+  .product-detail-specs__spec__title {
+    flex: 0 0 112px;
+  }
 }

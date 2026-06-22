@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { type ReactNode, createContext, useContext, useMemo, useState } from "react";
+
 import type { Product } from "@/types/product";
 
 type ProductsContextValue = {
@@ -21,9 +22,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     [products]
   );
 
-  return (
-    <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>
-  );
+  return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;
 }
 
 export function useProducts() {

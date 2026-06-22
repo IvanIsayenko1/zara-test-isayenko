@@ -1,7 +1,9 @@
-import { CartItem as CartItemType } from "@/context/cart-context";
-import "./cart-item.css";
 import Image from "next/image";
+
 import Button from "@/components/button/button";
+import { CartItem as CartItemType } from "@/context/cart-context";
+
+import "./cart-item.css";
 
 export default function CartItem({ item, onRemove }: { item: CartItemType; onRemove: () => void }) {
   return (

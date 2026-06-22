@@ -7,11 +7,8 @@
 }
 
 .filter-input__field {
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-16);
+  letter-spacing: var(--app-letter-spacing-none);
   vertical-align: middle;
 
   height: 19px;
@@ -23,11 +20,8 @@
 }
 
 .filter-input__field::placeholder {
-  font-family: Helvetica Neue;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  font: var(--app-text-light-16);
+  letter-spacing: var(--app-letter-spacing-none);
   vertical-align: middle;
 }
 

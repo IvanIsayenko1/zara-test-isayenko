@@ -1,15 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import type { CSSProperties } from "react";
-import "./header.css";
-import logo from "@/assets/icons/logo.svg";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import bag from "@/assets/icons/bag.svg";
 import filledBag from "@/assets/icons/filled-bag.svg";
-import { useLoading } from "@/context/loading-context";
-import Link from "next/link";
+import logo from "@/assets/icons/logo.svg";
 import { useCart } from "@/context/cart-context";
-import { usePathname } from "next/navigation";
+import { useLoading } from "@/context/loading-context";
+
+import "./header.css";
 
 export default function Header() {
   const { loadingProgress, setIsComplete } = useLoading();

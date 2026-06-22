@@ -1,10 +1,12 @@
 "use client";
 
-import { useCart } from "@/context/cart-context";
-import "./cart.css";
-import CartItem from "./cart-item/cart-item";
 import { useEffect, useState } from "react";
+
+import { useCart } from "@/context/cart-context";
+
 import CartFooter from "./cart-footer/cart-footer";
+import CartItem from "./cart-item/cart-item";
+import "./cart.css";
 
 export default function Cart() {
   const { cartItems, removeFromCart } = useCart();

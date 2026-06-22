@@ -1,8 +1,9 @@
 "use client";
 
 import { useProducts } from "@/context/products-context";
-import "./product-grid.css";
+
 import { ProductCard } from "../product-card/product-card";
+import "./product-grid.css";
 
 export function ProductGrid() {
   const { products } = useProducts();

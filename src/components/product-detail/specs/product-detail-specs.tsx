@@ -1,4 +1,5 @@
 import { ProductDetail } from "@/types/product";
+
 import "./product-detail-specs.css";
 
 export default function ProductDetailSpecs({ product }: { product: ProductDetail }) {

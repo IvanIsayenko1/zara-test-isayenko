@@ -1,6 +1,7 @@
-import { ColorSelectorProps } from "./color-selector.types";
-import "./color-selector.css";
 import { useState } from "react";
+
+import "./color-selector.css";
+import { ColorSelectorProps } from "./color-selector.types";
 
 export default function ColorSelector({
   title,

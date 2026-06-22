@@ -1,18 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { CartItem, useCart } from "@/context/cart-context";
 import { useLoading } from "@/context/loading-context";
 import type { ProductDetail as ProductDetailData } from "@/types/product";
-import { useEffect, useState } from "react";
-import "./product-detail.css";
-import Image from "next/image";
-import StorageSelector from "../storage-selector/storage-selector";
-import ColorSelector from "../color-selector/color-selector";
+
 import Button from "../button/button";
-import ProductDetailSpecs from "./specs/product-detail-specs";
-import SimilarProducts from "./similar-products/similar-products";
+import ColorSelector from "../color-selector/color-selector";
+import StorageSelector from "../storage-selector/storage-selector";
 import ProductDetailNavigation from "./navigation/product-detail-navigation";
-import { CartItem, useCart } from "@/context/cart-context";
-import { useRouter } from "next/navigation";
+import "./product-detail.css";
+import SimilarProducts from "./similar-products/similar-products";
+import ProductDetailSpecs from "./specs/product-detail-specs";
 
 export default function ProductDetail({ product }: { product: ProductDetailData }) {
   const router = useRouter();
@@ -76,7 +79,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
               alt={product.name}
               className="product-detail__image"
               fill
-              sizes="510px"
+              sizes="(min-width: 1024px) 510px, (min-width: 768px) calc(100vw - 80px), calc(100vw - 32px)"
               loading="eager"
             />
           </div>
@@ -90,7 +93,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
             </div>
 
             <StorageSelector
-              title="Storage ¿hOW MUCH SPACE DO YOU NEED?"
+              title="Storage ¿HOW MUCH SPACE DO YOU NEED?"
               options={product.storageOptions.map((option) => option.capacity)}
               value={null}
               onSelect={storageHandler}
@@ -107,6 +110,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
             />
 
             <Button
+              className="product-detail__summary__add-button"
               label="Añadir"
               onClick={addHandler}
               variant="primary"
