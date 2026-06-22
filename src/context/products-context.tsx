@@ -11,8 +11,14 @@ type ProductsContextValue = {
 
 const ProductsContext = createContext<ProductsContextValue | null>(null);
 
-export function ProductsProvider({ children }: { children: ReactNode }) {
-  const [products, setProducts] = useState<Product[]>([]);
+export function ProductsProvider({
+  children,
+  initialProducts = [],
+}: {
+  children: ReactNode;
+  initialProducts?: Product[];
+}) {
+  const [products, setProducts] = useState<Product[]>(initialProducts);
 
   const value = useMemo(
     () => ({

@@ -15,13 +15,12 @@ import "./filter-input.css";
 export function FilterInput() {
   const [filterValue, setFilterValue] = useState("");
   const { setProducts } = useProducts();
-  const { setLoadingProgress, setIsComplete } = useLoading();
+  const { setLoadingProgress } = useLoading();
 
   const searchProducts = useDebouncedCallback(async (search: string) => {
     setLoadingProgress(100);
     const products = await fetchProducts({ search });
     setLoadingProgress(0);
-    setIsComplete(true);
     setProducts(products);
   }, 500);
 

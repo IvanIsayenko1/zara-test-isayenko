@@ -5,6 +5,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -12,49 +13,63 @@ import {
 
 type LoadingProgress = 0 | 50 | 100;
 
-const LOADING_COMPLETE_DELAY = 500;
-const LOADING_RESET_DELAY = 800;
+export const LOADING_REVEAL_DELAY = 700;
 
 type LoadingContextValue = {
   loadingProgress: LoadingProgress;
   setLoadingProgress: (progress: LoadingProgress) => void;
   simulateLoading: () => void;
-  isComplete: boolean;
-  setIsComplete: (isComplete: boolean) => void;
+  stopLoading: () => void;
 };
 
 const LoadingContext = createContext<LoadingContextValue | null>(null);
 
 export function LoadingProvider({ children }: { children: ReactNode }) {
   const [loadingProgress, setLoadingProgressState] = useState<LoadingProgress>(0);
-  const loadingResetTimeoutRef = useRef<number | null>(null);
-  const [isComplete, setIsComplete] = useState(false);
+  const loadingTimeoutsRef = useRef<number[]>([]);
+
+  const clearLoadingTimeouts = useCallback(() => {
+    loadingTimeoutsRef.current.forEach((timeoutId) => {
+      window.clearTimeout(timeoutId);
+    });
+    loadingTimeoutsRef.current = [];
+  }, []);
+
+  const stopLoading = useCallback(() => {
+    clearLoadingTimeouts();
+    setLoadingProgressState(0);
+  }, [clearLoadingTimeouts]);
 
   const simulateLoading = useCallback(() => {
-    setIsComplete(false);
+    clearLoadingTimeouts();
+
     setLoadingProgressState(50);
 
-    loadingResetTimeoutRef.current = window.setTimeout(() => {
+    const completeTimeoutId = window.setTimeout(() => {
       setLoadingProgressState(100);
-      loadingResetTimeoutRef.current = null;
-    }, LOADING_COMPLETE_DELAY);
+    }, 300);
 
-    loadingResetTimeoutRef.current = window.setTimeout(() => {
+    const resetTimeoutId = window.setTimeout(() => {
       setLoadingProgressState(0);
-      loadingResetTimeoutRef.current = null;
-      setIsComplete(true);
-    }, LOADING_RESET_DELAY);
-  }, [setLoadingProgressState, loadingResetTimeoutRef, setIsComplete]);
+    }, LOADING_REVEAL_DELAY);
+
+    loadingTimeoutsRef.current = [completeTimeoutId, resetTimeoutId];
+  }, [clearLoadingTimeouts]);
+
+  useEffect(() => {
+    return () => {
+      clearLoadingTimeouts();
+    };
+  }, [clearLoadingTimeouts]);
 
   const value = useMemo(
     () => ({
       loadingProgress,
-      isComplete,
       simulateLoading,
-      setIsComplete,
       setLoadingProgress: setLoadingProgressState,
+      stopLoading,
     }),
-    [loadingProgress, isComplete, simulateLoading, setIsComplete, setLoadingProgressState]
+    [loadingProgress, simulateLoading, setLoadingProgressState, stopLoading]
   );
 
   return <LoadingContext.Provider value={value}>{children}</LoadingContext.Provider>;

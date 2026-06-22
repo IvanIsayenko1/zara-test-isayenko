@@ -15,7 +15,7 @@ import { useLoading } from "@/context/loading-context";
 import "./header.css";
 
 export default function Header() {
-  const { loadingProgress, setIsComplete } = useLoading();
+  const { loadingProgress } = useLoading();
   const { cartItems } = useCart();
 
   const pathname = usePathname();
@@ -31,12 +31,7 @@ export default function Header() {
       className={`header ${loadingProgress > 0 ? "header--loading" : ""}`}
       style={loadingStyle}
     >
-      <Link
-        href="/"
-        onClick={() => {
-          setIsComplete(true);
-        }}
-      >
+      <Link href="/">
         <Image src={logo} alt="Logo" width={74} height={24} loading="eager" />
       </Link>
 

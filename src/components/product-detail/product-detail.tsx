@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { CartItem, useCart } from "@/context/cart-context";
-import { useLoading } from "@/context/loading-context";
+import { usePageLoading } from "@/hooks/use-page-loading";
 import type { ProductDetail as ProductDetailData } from "@/types/product";
 
 import Button from "../button/button";
@@ -19,9 +19,9 @@ import StorageSelector from "./storage-selector/storage-selector";
 
 export default function ProductDetail({ product }: { product: ProductDetailData }) {
   const router = useRouter();
+  const isPageReady = usePageLoading();
 
   // context
-  const { simulateLoading, isComplete, setIsComplete } = useLoading();
   const { addToCart } = useCart();
 
   // state
@@ -34,11 +34,6 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
     product.colorOptions.find((option) => option.hexCode === colorHEX)?.imageUrl ||
     product.colorOptions[0].imageUrl;
   const isAddButtonDisabled = !storage || !colorHEX;
-
-  useEffect(() => {
-    setIsComplete(false);
-    simulateLoading();
-  }, [simulateLoading, setIsComplete]);
 
   const storageHandler = (value: string) => {
     const newPrice =
@@ -68,7 +63,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
   };
 
   return (
-    <div className={`product-detail ${isComplete ? "product-detail--open" : ""}`}>
+    <div className={`product-detail ${isPageReady ? "product-detail--open" : ""}`}>
       <ProductDetailNavigation />
 
       <div className="product-detail__content">
