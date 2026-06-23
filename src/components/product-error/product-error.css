@@ -38,15 +38,9 @@
   flex-wrap: wrap;
 }
 
-.product-error__link {
-  display: inline-flex;
-  text-decoration: none;
-}
-
 @media (width <= 768px) {
   .product-error__actions,
-  .product-error__actions .button,
-  .product-error__link {
+  .product-error__actions .button {
     width: 100%;
   }
 }

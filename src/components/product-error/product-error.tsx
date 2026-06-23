@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/button/button";
 import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
@@ -8,6 +8,7 @@ import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 import "./product-error.css";
 
 export default function ProductError({ resetAction }: { resetAction: () => void }) {
+  const router = useRouter();
   useCompleteHeaderLoading();
 
   return (
@@ -22,9 +23,14 @@ export default function ProductError({ resetAction }: { resetAction: () => void 
 
       <div className="product-error__actions">
         <Button label="TRY AGAIN" variant="primary" onClick={resetAction} />
-        <Link className="product-error__link" href="/">
-          <Button label="BACK TO CATALOG" variant="outlined" />
-        </Link>
+        <Button
+          label="BACK TO CATALOG"
+          variant="outlined"
+          className="product-error__button"
+          onClick={() => {
+            router.push("/");
+          }}
+        />
       </div>
     </div>
   );

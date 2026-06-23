@@ -16,16 +16,18 @@ export default function StorageSelector<Option extends string>({
       <div className="storage-selector__label">{title}</div>
       <div className="storage-selector__options">
         {options.map((option, index) => (
-          <div
+          <button
+            type="button"
             key={index}
             className={`storage-selector__option ${option === selectedOption ? "storage-selector__option--selected" : ""}`}
+            aria-pressed={option === selectedOption}
             onClick={() => {
               setSelectedOption(option);
               onSelect(option);
             }}
           >
             <div className="storage-selector__option-label">{option}</div>
-          </div>
+          </button>
         ))}
       </div>
     </div>

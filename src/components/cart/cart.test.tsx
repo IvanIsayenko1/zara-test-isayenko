@@ -1,20 +1,36 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { useRouter } from "next/navigation";
+
 import { useCart } from "@/context/cart-context";
 import { mockCartItems } from "@/mocks/cart-items";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 import Cart from "./cart";
 
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+}));
+
 vi.mock("@/context/cart-context", () => ({
   useCart: vi.fn(),
 }));
 
+const mockedUseRouter = vi.mocked(useRouter);
 const mockedUseCart = vi.mocked(useCart);
 
 const removeFromCart = vi.fn();
+const push = vi.fn();
 
 function renderCart(cartItems = mockCartItems) {
+  mockedUseRouter.mockReturnValue({
+    back: vi.fn(),
+    forward: vi.fn(),
+    prefetch: vi.fn(),
+    push,
+    refresh: vi.fn(),
+    replace: vi.fn(),
+  });
   mockedUseCart.mockReturnValue({
     cartItems,
     addToCart: vi.fn(),
@@ -60,7 +76,7 @@ describe("Cart", () => {
   it("renders the cart footer", () => {
     renderCart();
 
-    expect(screen.getAllByRole("link", { name: "CONTINUE SHOPPING" })).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "CONTINUE SHOPPING" })).toHaveLength(2);
   });
 
   it("fades in the cart after the transition delay", () => {

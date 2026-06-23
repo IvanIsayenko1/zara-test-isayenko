@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/button/button";
 import { useCart } from "@/context/cart-context";
@@ -6,17 +8,19 @@ import { useCart } from "@/context/cart-context";
 import "./cart-footer.css";
 
 export default function CartFooter() {
+  const router = useRouter();
   const { cartItems } = useCart();
 
   const total = cartItems.reduce((acc, item) => acc + item.price, 0);
   const isCartNotEmpty = cartItems.length > 0;
+  const continueShoppingHandler = () => {
+    router.push("/");
+  };
 
   return (
     <>
       <div className="cart-footer">
-        <Link href="/">
-          <Button label="CONTINUE SHOPPING" variant="outlined" onClick={() => {}} />
-        </Link>
+        <Button label="CONTINUE SHOPPING" variant="outlined" onClick={continueShoppingHandler} />
 
         {isCartNotEmpty && (
           <div className="cart-footer__end">
@@ -43,14 +47,12 @@ export default function CartFooter() {
           </div>
         )}
         <div className="cart-footer__mobile__end">
-          <Link href="/">
-            <Button
-              label="CONTINUE SHOPPING"
-              variant="outlined"
-              onClick={() => {}}
-              className="cart-footer__mobile__button"
-            />
-          </Link>
+          <Button
+            label="CONTINUE SHOPPING"
+            variant="outlined"
+            onClick={continueShoppingHandler}
+            className="cart-footer__mobile__button"
+          />
           {isCartNotEmpty && (
             <Button
               label="PAY"

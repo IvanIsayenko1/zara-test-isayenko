@@ -1,18 +1,34 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { useRouter } from "next/navigation";
+
 import { useCart } from "@/context/cart-context";
 import { mockCartItems, mockCartTotal } from "@/mocks/cart-items";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 import CartFooter from "./cart-footer";
+
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+}));
 
 vi.mock("@/context/cart-context", () => ({
   useCart: vi.fn(),
 }));
 
+const mockedUseRouter = vi.mocked(useRouter);
 const mockedUseCart = vi.mocked(useCart);
+const push = vi.fn();
 
 function renderCartFooter(items = mockCartItems) {
+  mockedUseRouter.mockReturnValue({
+    back: vi.fn(),
+    forward: vi.fn(),
+    prefetch: vi.fn(),
+    push,
+    refresh: vi.fn(),
+    replace: vi.fn(),
+  });
   mockedUseCart.mockReturnValue({
     cartItems: items,
     addToCart: vi.fn(),
@@ -31,15 +47,18 @@ describe("CartFooter", () => {
     cleanup();
   });
 
-  it("renders continue shopping links to the catalog", () => {
+  it("navigates to the catalog when continue shopping is clicked", () => {
     renderCartFooter();
 
-    const continueShoppingLinks = screen.getAllByRole("link", { name: "CONTINUE SHOPPING" });
-
-    expect(continueShoppingLinks).toHaveLength(2);
-    continueShoppingLinks.forEach((link) => {
-      expect(link).toHaveAttribute("href", "/");
+    const continueShoppingButtons = screen.getAllByRole("button", {
+      name: "CONTINUE SHOPPING",
     });
+
+    expect(continueShoppingButtons).toHaveLength(2);
+
+    fireEvent.click(continueShoppingButtons[0]);
+
+    expect(push).toHaveBeenCalledWith("/");
   });
 
   it("renders total and pay buttons when the cart has items", () => {
@@ -55,6 +74,6 @@ describe("CartFooter", () => {
 
     expect(screen.queryByText("Total")).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "PAY" })).not.toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "CONTINUE SHOPPING" })).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "CONTINUE SHOPPING" })).toHaveLength(2);
   });
 });

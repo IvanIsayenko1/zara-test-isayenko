@@ -18,9 +18,12 @@ export default function ColorSelector({
       <div className="color-selector__options-container">
         <div className="color-selector__options">
           {options.map((option) => (
-            <div
+            <button
+              type="button"
               key={option.value}
               className={`color-selector__option ${selectedOption === option.value ? "color-selector__option--selected" : ""}`}
+              aria-label={option.label}
+              aria-pressed={selectedOption === option.value}
               onClick={() => {
                 setSelectedOption(option.value);
                 onSelect(option.value);
@@ -36,7 +39,7 @@ export default function ColorSelector({
                 className="color-selector__swatch"
                 style={{ backgroundColor: option.value }}
               ></div>
-            </div>
+            </button>
           ))}
         </div>
         <div className="color-selector__selected">

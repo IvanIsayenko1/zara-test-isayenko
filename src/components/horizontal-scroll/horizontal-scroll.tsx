@@ -51,7 +51,13 @@ export default function HorizontalScroll({
 
   return (
     <div className={`horizontal-scroll ${className}`}>
-      <div className="horizontal-scroll__viewport" ref={viewportRef} onScroll={updateThumb}>
+      <div
+        className="horizontal-scroll__viewport"
+        ref={viewportRef}
+        onScroll={updateThumb}
+        tabIndex={0}
+        aria-label="Scrollable content"
+      >
         <div className={`horizontal-scroll__content ${contentClassName}`}>{children}</div>
       </div>
       <div className="horizontal-scroll__track" ref={trackRef} aria-hidden="true">

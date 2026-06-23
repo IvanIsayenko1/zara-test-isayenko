@@ -22,6 +22,8 @@
   justify-content: center;
   width: 95px;
   height: 65px;
+  padding: 0;
+  background: transparent;
   cursor: pointer;
   border-color: #ccc;
   border-style: solid;

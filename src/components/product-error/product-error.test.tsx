@@ -1,5 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+import { useRouter } from "next/navigation";
+
 import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
@@ -9,7 +11,26 @@ vi.mock("@/hooks/use-complete-header-loading", () => ({
   useCompleteHeaderLoading: vi.fn(),
 }));
 
+vi.mock("next/navigation", () => ({
+  useRouter: vi.fn(),
+}));
+
 const mockedUseCompleteHeaderLoading = vi.mocked(useCompleteHeaderLoading);
+const mockedUseRouter = vi.mocked(useRouter);
+const push = vi.fn();
+
+function renderProductError(resetAction = vi.fn()) {
+  mockedUseRouter.mockReturnValue({
+    back: vi.fn(),
+    forward: vi.fn(),
+    prefetch: vi.fn(),
+    push,
+    refresh: vi.fn(),
+    replace: vi.fn(),
+  });
+
+  return render(<ProductError resetAction={resetAction} />);
+}
 
 describe("ProductError", () => {
   afterEach(() => {
@@ -18,26 +39,34 @@ describe("ProductError", () => {
   });
 
   it("completes header loading when rendered", () => {
-    render(<ProductError resetAction={vi.fn()} />);
+    renderProductError();
 
     expect(mockedUseCompleteHeaderLoading).toHaveBeenCalled();
   });
 
   it("renders retry and catalog actions", () => {
-    render(<ProductError resetAction={vi.fn()} />);
+    renderProductError();
 
     expect(screen.getByText("Something went wrong")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "TRY AGAIN" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "BACK TO CATALOG" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("button", { name: "BACK TO CATALOG" })).toBeInTheDocument();
   });
 
   it("calls reset when retry is clicked", () => {
     const reset = vi.fn();
 
-    render(<ProductError resetAction={reset} />);
+    renderProductError(reset);
 
     fireEvent.click(screen.getByRole("button", { name: "TRY AGAIN" }));
 
     expect(reset).toHaveBeenCalledTimes(1);
+  });
+
+  it("navigates to catalog when back to catalog is clicked", () => {
+    renderProductError();
+
+    fireEvent.click(screen.getByRole("button", { name: "BACK TO CATALOG" }));
+
+    expect(push).toHaveBeenCalledWith("/");
   });
 });

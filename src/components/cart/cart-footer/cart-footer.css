@@ -29,12 +29,6 @@
   min-width: 0;
 }
 
-.cart-footer a,
-.cart-footer__mobile__end a {
-  display: inline-flex;
-  text-decoration: none;
-}
-
 .cart-footer__mobile__button {
   width: 100% !important;
 }
