@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/button/button";
 import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 
-import "./product-error.css";
-
 export default function ProductError({ resetAction }: { resetAction: () => void }) {
   const router = useRouter();
   useCompleteHeaderLoading();
