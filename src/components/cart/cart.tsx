@@ -2,7 +2,7 @@
 
 import { useCart } from "@/context/cart-context";
 
-import { DelayedFadeIn } from "../delayed-fade-in/delayed-fade-in";
+import DelayedFadeIn from "../delayed-fade-in/delayed-fade-in";
 import CartFooter from "./cart-footer/cart-footer";
 import CartItem from "./cart-item/cart-item";
 import "./cart.css";

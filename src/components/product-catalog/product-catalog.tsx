@@ -1,7 +1,6 @@
 "use client";
 
-import { DelayedFadeIn } from "@/components/delayed-fade-in/delayed-fade-in";
-
+import DelayedFadeIn from "../delayed-fade-in/delayed-fade-in";
 import { FilterBar } from "./filter-bar/filter-bar";
 import "./product-catalog.css";
 import { ProductGrid } from "./product-grid/product-grid";

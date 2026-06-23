@@ -5,12 +5,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { DelayedFadeIn } from "@/components/delayed-fade-in/delayed-fade-in";
 import { CartItem, useCart } from "@/context/cart-context";
 import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 import type { ProductDetail as ProductDetailData } from "@/types/product";
 
 import Button from "../button/button";
+import DelayedFadeIn from "../delayed-fade-in/delayed-fade-in";
 import ColorSelector from "./color-selector/color-selector";
 import ProductDetailNavigation from "./navigation/product-detail-navigation";
 import "./product-detail.css";

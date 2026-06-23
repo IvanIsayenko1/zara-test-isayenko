@@ -2,10 +2,10 @@
 
 import { type CSSProperties, useEffect, useState } from "react";
 
-import { type DelayedFadeInProps } from "./delayed-fade-in";
 import "./delayed-fade-in.css";
+import { DelayedFadeInProps } from "./delayed-fade-in.types";
 
-export function DelayedFadeIn({
+export default function DelayedFadeIn({
   children,
   className = "",
   delay = 300,
