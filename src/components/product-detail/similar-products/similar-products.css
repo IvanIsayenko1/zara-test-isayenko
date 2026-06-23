@@ -13,24 +13,5 @@
 }
 
 .similar-products__carousel {
-  display: flex;
   width: 100%;
-  overflow: scroll hidden;
-  padding-bottom: 40px;
-  scrollbar-color: #ccc #000;
-  scrollbar-width: thin;
-}
-
-.similar-products__carousel::-webkit-scrollbar {
-  height: 1px;
-}
-
-.similar-products__carousel::-webkit-scrollbar-track {
-  height: 1px;
-  background: #ccc;
-}
-
-.similar-products__carousel::-webkit-scrollbar-thumb {
-  height: 1px;
-  background: #000;
 }
