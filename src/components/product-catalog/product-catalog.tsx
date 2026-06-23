@@ -1,18 +1,16 @@
 "use client";
 
+import { DelayedFadeIn } from "@/components/delayed-fade-in/delayed-fade-in";
+
 import { FilterBar } from "./filter-bar/filter-bar";
 import "./product-catalog.css";
 import { ProductGrid } from "./product-grid/product-grid";
 
-export default function ProductCatalog({ isReady }: { isReady: boolean }) {
+export default function ProductCatalog() {
   return (
-    <div className={`product-catalog ${isReady ? "product-catalog--open" : ""}`}>
-      {isReady && (
-        <>
-          <FilterBar />
-          <ProductGrid />
-        </>
-      )}
-    </div>
+    <DelayedFadeIn className="product-catalog">
+      <FilterBar />
+      <ProductGrid />
+    </DelayedFadeIn>
   );
 }

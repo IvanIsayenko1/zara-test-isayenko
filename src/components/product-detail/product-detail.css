@@ -4,21 +4,6 @@
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 500ms ease,
-    visibility 0ms linear 500ms;
-  pointer-events: none;
-}
-
-.product-detail--open {
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 500ms ease,
-    visibility 0ms linear 0ms;
-  pointer-events: auto;
 }
 
 .product-detail__content {

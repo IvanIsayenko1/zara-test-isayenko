@@ -1,0 +1,17 @@
+.delayed-fade-in {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--delayed-fade-in-duration) ease,
+    visibility 0ms linear var(--delayed-fade-in-duration);
+  pointer-events: none;
+}
+
+.delayed-fade-in--visible {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--delayed-fade-in-duration) ease,
+    visibility 0ms linear 0ms;
+  pointer-events: auto;
+}

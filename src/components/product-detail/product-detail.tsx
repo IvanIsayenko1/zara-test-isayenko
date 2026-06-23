@@ -5,8 +5,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+import { DelayedFadeIn } from "@/components/delayed-fade-in/delayed-fade-in";
+import { HeaderLoadingComplete } from "@/components/header-loading/header-loading-complete";
 import { CartItem, useCart } from "@/context/cart-context";
-import { usePageLoading } from "@/hooks/use-page-loading";
 import type { ProductDetail as ProductDetailData } from "@/types/product";
 
 import Button from "../button/button";
@@ -19,7 +20,6 @@ import StorageSelector from "./storage-selector/storage-selector";
 
 export default function ProductDetail({ product }: { product: ProductDetailData }) {
   const router = useRouter();
-  const isPageReady = usePageLoading();
 
   // context
   const { addToCart } = useCart();
@@ -63,7 +63,8 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
   };
 
   return (
-    <div className={`product-detail ${isPageReady ? "product-detail--open" : ""}`}>
+    <DelayedFadeIn className="product-detail">
+      <HeaderLoadingComplete />
       <ProductDetailNavigation />
 
       <div className="product-detail__content">
@@ -118,6 +119,6 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
 
         <SimilarProducts product={product} />
       </div>
-    </div>
+    </DelayedFadeIn>
   );
 }
