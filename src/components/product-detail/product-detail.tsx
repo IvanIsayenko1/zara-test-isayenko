@@ -107,7 +107,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
 
             <Button
               className="product-detail__summary__add-button"
-              label="Añadir"
+              label="AÑADIR"
               onClick={addHandler}
               variant="primary"
               disabled={isAddButtonDisabled}
