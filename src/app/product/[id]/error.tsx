@@ -1,6 +1,8 @@
 "use client";
 
-import ProductError from "@/components/product-error/product-error";
+import dynamic from "next/dynamic";
+
+const ProductError = dynamic(() => import("@/components/product-error/product-error"));
 
 export default function Error({
   reset,
