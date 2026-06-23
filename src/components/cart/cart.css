@@ -3,23 +3,6 @@
   flex-direction: column;
   height: 100%;
   min-height: 0;
-  opacity: 0;
-  visibility: hidden;
-  overflow: hidden;
-  transition:
-    opacity 500ms ease,
-    visibility 0ms linear 500ms;
-  box-sizing: border-box;
-  pointer-events: none;
-}
-
-.cart--open {
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 500ms ease,
-    visibility 0ms linear 0ms;
-  pointer-events: auto;
 }
 
 .cart__content {

@@ -6,7 +6,7 @@ import { useLoading } from "@/context/loading-context";
 
 const HEADER_LOADING_RESET_DELAY = 300;
 
-export function HeaderLoadingComplete() {
+export function useCompleteHeaderLoading() {
   const { setLoadingProgress } = useLoading();
 
   useEffect(() => {
@@ -20,6 +20,4 @@ export function HeaderLoadingComplete() {
       window.clearTimeout(timeoutId);
     };
   }, [setLoadingProgress]);
-
-  return null;
 }

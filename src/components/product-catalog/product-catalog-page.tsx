@@ -1,14 +1,11 @@
 "use client";
 
-import { HeaderLoadingComplete } from "@/components/header-loading/header-loading-complete";
+import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 
 import ProductCatalog from "./product-catalog";
 
 export function ProductCatalogPage() {
-  return (
-    <>
-      <HeaderLoadingComplete />
-      <ProductCatalog />
-    </>
-  );
+  useCompleteHeaderLoading();
+
+  return <ProductCatalog />;
 }

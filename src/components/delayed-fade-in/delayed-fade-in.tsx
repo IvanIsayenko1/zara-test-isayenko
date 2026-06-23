@@ -1,15 +1,9 @@
 "use client";
 
-import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 
+import { type DelayedFadeInProps } from "./delayed-fade-in";
 import "./delayed-fade-in.css";
-
-type DelayedFadeInProps = {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  duration?: number;
-};
 
 export function DelayedFadeIn({
   children,
