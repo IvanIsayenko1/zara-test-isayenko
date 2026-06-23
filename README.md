@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mobile Store
 
-## Getting Started
+A Next.js product catalog and cart application built for the Zara frontend technical test.
 
-First, run the development server:
+## Features
+
+- Product catalog with search
+- Product detail page
+- Storage and color selection
+- Persistent cart
+- Responsive layout
+- Route loading states
+- Error states
+- Route-level error boundaries
+- Custom horizontal scroll for similar products
+- Unit tests with Vitest and Testing Library
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Plain CSS files colocated with components
+- Vitest
+- Testing Library
+- Stylelint
+- Prettier
+
+## How to Run
+
+### Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev
+pnpm build
+pnpm start
+pnpm test
+pnpm lint
+pnpm stylelint
+pnpm format:check
+```
 
-## Learn More
+### Production URL
 
-To learn more about Next.js, take a look at the following resources:
+https://zara-test-isayenko.vercel.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app is deployed automatically to Vercel when changes are pushed to the `main` branch.
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Fetching
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This application uses Server components to fetch product data from the API. This is useful because it allows the data to be fetched on the server side, which can improve performance and SEO.
+
+During the fetching, the app also reflects the loading state to the user. It uses server components to initialize the fetching process and display a loading indicator while waiting for the data to be fetched.
+
+If during the fetching process an error occurs, the app displays an error state to the user.
+
+### Project Structure
+
+The project is structured as follows:
+
+```
+src/
+├── app/
+│   ├── (catalog)/
+│   │   ├── page.tsx
+│   │   ├── loading.tsx
+│   │   └── error.tsx
+│   ├── product/[id]/
+│   │   ├── page.tsx
+│   │   ├── loading.tsx
+│   │   └── error.tsx
+│   ├── cart/
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   └── ...
+├── components/
+│   ├── product-catalog/
+│   │   ├── product-catalog.tsx
+│   │   ├── product-catalog.test.tsx
+│   │   ├── product-catalog.css
+│   │   └── ...
+│   ├── product-detail/
+│   │   ├── product-detail.tsx
+│   │   ├── product-detail.test.tsx
+│   │   ├── product-detail.css
+│   │   └── ...
+│   └── ...
+├── hooks/
+│   ├── use-debounce.ts
+│   └── ...
+├── context/
+│   ├── cart-context.tsx
+│   └── ...
+├── services/
+│   ├── products.ts
+│   └── ...
+└── ...
+```
+
+### Naming Convention
+
+- For the files, use kebab-case, e.g. `use-cart.ts`.
+- For types add `.types.ts` suffix, e.g. `use-cart.types.ts`.
+- For tests add `.test.ts` or `.test.tsx` suffix, e.g. `button.test.tsx`.
+
+### Testing
+
+- Use Vitest for testing.
+- Use React Testing Library for testing React components.
+
+### Styling
+
+- Global styles are defined in `globals.css`.
+- Component-specific styles are colocated with each component as plain CSS files.
+- Use variables from `globals.css` for styling.
