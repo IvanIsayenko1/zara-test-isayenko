@@ -15,3 +15,8 @@
 .similar-products__carousel {
   width: 100%;
 }
+
+.similar-products__carousel .product-card {
+  flex: 0 0 344px;
+  width: 344px;
+}
