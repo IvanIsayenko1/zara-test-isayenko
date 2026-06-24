@@ -59,6 +59,10 @@ The app is deployed automatically to Vercel when changes are pushed to the `main
 
 ## Development
 
+### Why Next.js
+
+Next.js was chosen because it provides a React-based architecture with built-in routing and Server components. This fits the challenge well because product catalog and detail data can be fetched on the server, while route-based views such as catalog, product detail, cart, loading states, and error boundaries are handled directly by the framework.
+
 ### Fetching
 
 This application uses Server components to fetch product data from the API. This is useful because it allows the data to be fetched on the server side, which can improve performance and SEO.
