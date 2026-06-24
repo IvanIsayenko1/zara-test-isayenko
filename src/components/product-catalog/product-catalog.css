@@ -4,10 +4,11 @@
   flex-direction: column;
   height: 100%;
   min-height: 0;
+  overflow: hidden auto;
   padding-top: 48px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .product-catalog {
     padding-top: 24px;
   }

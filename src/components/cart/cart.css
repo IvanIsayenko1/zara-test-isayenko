@@ -11,9 +11,9 @@
   flex-direction: column;
   gap: 48px;
   min-height: 0;
+  padding-inline: var(--app-padding-inline);
   overflow-y: auto;
   padding-top: 48px;
-  padding-inline: var(--app-padding-inline);
 }
 
 .cart__count {
@@ -24,9 +24,9 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .cart__content {
-    padding-top: 24px;
     gap: 24px;
+    padding-top: 24px;
   }
 }

@@ -13,7 +13,7 @@
   gap: 124px;
   padding-inline: var(--app-padding-inline);
   overflow-y: auto;
-  padding-bottom: 80px;
+  padding-bottom: 48px;
 }
 
 .product-detail__overview {
@@ -76,6 +76,7 @@
 
   .product-detail__content {
     gap: 80px;
+    padding-bottom: 24px;
   }
 }
 

@@ -5,18 +5,25 @@
   flex: 1;
   min-height: 0;
   padding-inline: var(--app-padding-inline);
-  overflow: hidden auto;
   grid-template-columns: repeat(
     auto-fill,
     minmax(min(100%, var(--product-grid-card-min-width)), 1fr)
   );
-  padding-bottom: 100px;
   padding-top: 48px;
   place-content: start start;
 }
 
-@media (max-width: 768px) {
+.product-grid::after {
+  height: 48px;
+  content: "";
+}
+
+@media (width <= 768px) {
   .product-grid {
     padding-top: 24px;
+  }
+
+  .product-grid::after {
+    height: 24px;
   }
 }
