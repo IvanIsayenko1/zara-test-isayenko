@@ -63,9 +63,13 @@ The app is deployed automatically to Vercel when changes are pushed to the `main
 
 This application uses Server components to fetch product data from the API. This is useful because it allows the data to be fetched on the server side, which can improve performance and SEO.
 
+The initial catalog and product detail data are fetched with Server components. The search input performs client-side API requests because it depends on user interaction. Search requests are debounced to avoid calling the API on every keystroke.
+
 During the fetching, the app also reflects the loading state to the user. It uses server components to initialize the fetching process and display a loading indicator while waiting for the data to be fetched.
 
 If during the fetching process an error occurs, the app displays an error state to the user.
+
+The cart state is handled with React Context and persisted in `localStorage`, so selected products remain available after refreshing the page.
 
 ### Project Structure
 
