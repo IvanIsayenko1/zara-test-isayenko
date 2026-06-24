@@ -34,6 +34,7 @@
   font: var(--app-text-light-16);
   letter-spacing: var(--app-letter-spacing-none);
   vertical-align: middle;
+  color: #aaaaaa;
 }
 
 .filter-input__field:focus {

@@ -14,3 +14,9 @@
   padding-top: 48px;
   place-content: start start;
 }
+
+@media (max-width: 768px) {
+  .product-grid {
+    padding-top: 24px;
+  }
+}

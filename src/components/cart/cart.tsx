@@ -18,11 +18,9 @@ export default function Cart() {
     <DelayedFadeIn className="cart" delay={100}>
       <div className="cart__content">
         <div className="cart__count">Cart ({cartItems.length})</div>
-        <div className="cart__items">
-          {cartItems.map((item, index) => (
-            <CartItem key={index} item={item} onRemove={() => handleRemove(index)} />
-          ))}
-        </div>
+        {cartItems.map((item, index) => (
+          <CartItem key={index} item={item} onRemove={() => handleRemove(index)} />
+        ))}
       </div>
       <CartFooter />
     </DelayedFadeIn>

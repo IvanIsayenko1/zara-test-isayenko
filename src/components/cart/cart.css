@@ -9,14 +9,14 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 44px;
+  gap: 48px;
   min-height: 0;
   overflow-y: auto;
-  padding-top: 44px;
+  padding-top: 48px;
+  padding-inline: var(--app-padding-inline);
 }
 
 .cart__count {
-  padding-inline: var(--app-padding-inline);
   font: var(--app-text-light-24);
   letter-spacing: var(--app-letter-spacing-none);
   padding-bottom: 12px;
@@ -24,6 +24,9 @@
   text-transform: uppercase;
 }
 
-.cart__items {
-  padding-inline: var(--app-padding-inline);
+@media (max-width: 768px) {
+  .cart__content {
+    padding-top: 24px;
+    gap: 24px;
+  }
 }
