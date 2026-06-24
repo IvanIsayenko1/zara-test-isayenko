@@ -68,7 +68,7 @@ describe("Cart", () => {
   it("removes the selected cart item", () => {
     renderCart();
 
-    fireEvent.click(screen.getAllByRole("button", { name: "Eliminar" })[1]);
+    fireEvent.click(screen.getAllByRole("button", { name: "Remove" })[1]);
 
     expect(removeFromCart).toHaveBeenCalledWith(1);
   });

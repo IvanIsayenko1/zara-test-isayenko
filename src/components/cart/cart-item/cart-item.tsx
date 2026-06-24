@@ -31,7 +31,7 @@ export default function CartItem({ item, onRemove }: { item: CartItemType; onRem
           <div className="cart-item__price">{item.price} EUR</div>
         </div>
 
-        <Button label="Eliminar" variant="danger" onClick={onRemove} />
+        <Button label="Remove" variant="danger" onClick={onRemove} />
       </div>
     </div>
   );

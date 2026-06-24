@@ -26,7 +26,7 @@ describe("CartItem", () => {
 
     render(<CartItem item={mockCartItems[0]} onRemove={onRemove} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Eliminar" }));
+    fireEvent.click(screen.getByRole("button", { name: "Remove" }));
 
     expect(onRemove).toHaveBeenCalledTimes(1);
   });

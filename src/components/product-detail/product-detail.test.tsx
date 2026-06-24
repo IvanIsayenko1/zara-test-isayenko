@@ -89,7 +89,7 @@ describe("ProductDetail", () => {
 
     fireEvent.click(screen.getByText(mockedOption.capacity));
     fireEvent.click(container.querySelectorAll(".color-selector__option")[1]);
-    fireEvent.click(screen.getByRole("button", { name: "Añadir" }));
+    fireEvent.click(screen.getByRole("button", { name: "ADD" }));
 
     expect(addToCart).toHaveBeenCalledWith({
       brand: mockProductDetail.brand,
@@ -107,7 +107,7 @@ describe("ProductDetail", () => {
     const { container } = renderProductDetail();
     const mockedOption = mockProductDetail.storageOptions[0];
 
-    const addButton = screen.getByRole("button", { name: "Añadir" });
+    const addButton = screen.getByRole("button", { name: "ADD" });
 
     expect(addButton).toBeDisabled();
 

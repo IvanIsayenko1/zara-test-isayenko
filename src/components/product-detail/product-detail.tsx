@@ -89,7 +89,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
             </div>
 
             <StorageSelector
-              title="Storage ¿HOW MUCH SPACE DO YOU NEED?"
+              title="Storage. How much space do you need?"
               options={product.storageOptions.map((option) => option.capacity)}
               value={null}
               onSelect={storageHandler}
@@ -107,7 +107,7 @@ export default function ProductDetail({ product }: { product: ProductDetailData 
 
             <Button
               className="product-detail__summary__add-button"
-              label="AÑADIR"
+              label="ADD"
               onClick={addHandler}
               variant="primary"
               disabled={isAddButtonDisabled}

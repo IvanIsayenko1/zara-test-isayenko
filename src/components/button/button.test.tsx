@@ -26,9 +26,9 @@ describe("Button", () => {
   it("calls onClick when clicked", () => {
     const onClick = vi.fn();
 
-    render(<Button label="Eliminar" variant="danger" onClick={onClick} />);
+    render(<Button label="REMOVE" variant="danger" onClick={onClick} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Eliminar" }));
+    fireEvent.click(screen.getByRole("button", { name: "REMOVE" }));
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
@@ -36,9 +36,9 @@ describe("Button", () => {
   it("does not call onClick when disabled", () => {
     const onClick = vi.fn();
 
-    render(<Button label="Añadir" variant="primary" onClick={onClick} disabled />);
+    render(<Button label="ADD" variant="primary" onClick={onClick} disabled />);
 
-    const button = screen.getByRole("button", { name: "Añadir" });
+    const button = screen.getByRole("button", { name: "ADD" });
 
     expect(button).toBeDisabled();
 
