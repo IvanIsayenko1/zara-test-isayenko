@@ -36,7 +36,12 @@ export default function Header() {
       </Link>
 
       {!isCartPage && (
-        <Link className="header__cart" href="/cart" aria-label={`Cart, ${cartItems.length} items`}>
+        <Link
+          className="header__cart"
+          href="/cart"
+          aria-label={`Cart, ${cartItems.length} items`}
+          prefetch={false}
+        >
           <span className="header__cart-icon" aria-hidden="true">
             <Image
               className="header__cart-icon-image"
