@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+
 import { useCompleteHeaderLoading } from "@/hooks/use-complete-header-loading";
 
 const ProductError = dynamic(() => import("@/components/product-error/product-error"));
