@@ -1,14 +1,13 @@
 .product-card {
-  --product-card-min-size: 344px;
+  --product-card-height: 344px;
 
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  min-width: min(100%, var(--product-card-min-size));
-  height: var(--product-card-min-size);
-  min-height: var(--product-card-min-size);
+  height: var(--product-card-height);
+  min-height: var(--product-card-height);
   padding: 16px;
   overflow: hidden;
   cursor: pointer;
