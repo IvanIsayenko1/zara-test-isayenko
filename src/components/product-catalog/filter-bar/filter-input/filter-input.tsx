@@ -34,6 +34,9 @@ export function FilterInput() {
 
   return (
     <div className="filter-input">
+      <label className="filter-input__label" htmlFor="filter-name">
+        Search products
+      </label>
       <input
         type="text"
         className="filter-input__field"

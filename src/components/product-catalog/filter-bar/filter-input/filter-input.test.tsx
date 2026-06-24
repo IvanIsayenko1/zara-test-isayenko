@@ -60,7 +60,7 @@ describe("FilterInput", () => {
   it("searches products after the debounce delay and updates products context", async () => {
     render(<FilterInput />);
 
-    const input = screen.getByPlaceholderText("Search for a smartphone...");
+    const input = screen.getByRole("textbox", { name: "Search products" });
 
     fireEvent.change(input, { target: { value: "samsung" } });
 
@@ -76,7 +76,7 @@ describe("FilterInput", () => {
   it("clears the input and searches with an empty query", async () => {
     render(<FilterInput />);
 
-    const input = screen.getByPlaceholderText("Search for a smartphone...");
+    const input = screen.getByRole("textbox", { name: "Search products" });
 
     fireEvent.change(input, { target: { value: "iphone" } });
 
