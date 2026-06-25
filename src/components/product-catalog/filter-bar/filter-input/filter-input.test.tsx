@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useLoading } from "@/context/loading-context";
 import { useProducts } from "@/context/products-context";
 import { mockProducts } from "@/mocks/products";
-import { fetchProducts } from "@/services/products";
+import { searchProducts } from "@/services/search-products";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 import { FilterInput } from "./filter-input";
@@ -16,13 +16,13 @@ vi.mock("@/context/products-context", () => ({
   useProducts: vi.fn(),
 }));
 
-vi.mock("@/services/products", () => ({
-  fetchProducts: vi.fn(),
+vi.mock("@/services/search-products", () => ({
+  searchProducts: vi.fn(),
 }));
 
 const mockedUseLoading = vi.mocked(useLoading);
 const mockedUseProducts = vi.mocked(useProducts);
-const mockedFetchProducts = vi.mocked(fetchProducts);
+const mockedSearchProducts = vi.mocked(searchProducts);
 
 const setProducts = vi.fn();
 const setLoadingProgress = vi.fn();
@@ -41,7 +41,7 @@ describe("FilterInput", () => {
     setProducts.mockClear();
     setLoadingProgress.mockClear();
 
-    mockedFetchProducts.mockResolvedValue(mockProducts);
+    mockedSearchProducts.mockResolvedValue(mockProducts);
     mockedUseProducts.mockReturnValue({
       products: [],
       setProducts,
@@ -65,11 +65,11 @@ describe("FilterInput", () => {
     fireEvent.change(input, { target: { value: "samsung" } });
 
     expect(input).toHaveValue("samsung");
-    expect(mockedFetchProducts).not.toHaveBeenCalled();
+    expect(mockedSearchProducts).not.toHaveBeenCalled();
 
     await advanceDebounce();
 
-    expect(mockedFetchProducts).toHaveBeenCalledWith({ search: "samsung" });
+    expect(mockedSearchProducts).toHaveBeenCalledWith("samsung");
     expect(setProducts).toHaveBeenCalledWith(mockProducts);
   });
 
@@ -89,8 +89,8 @@ describe("FilterInput", () => {
 
     await advanceDebounce();
 
-    expect(mockedFetchProducts).toHaveBeenCalledTimes(1);
-    expect(mockedFetchProducts).toHaveBeenCalledWith({ search: "" });
+    expect(mockedSearchProducts).toHaveBeenCalledTimes(1);
+    expect(mockedSearchProducts).toHaveBeenCalledWith("");
     expect(setProducts).toHaveBeenCalledWith(mockProducts);
   });
 });

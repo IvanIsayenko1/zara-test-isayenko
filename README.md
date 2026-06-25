@@ -30,6 +30,14 @@ A Next.js product catalog and cart application built for the Zara frontend techn
 
 ### Development
 
+Create a local environment file:
+
+```bash
+cp .env.example .env.local
+```
+
+Then set `PRODUCTS_API_KEY` with the API key provided for the test.
+
 ```bash
 pnpm install
 pnpm dev

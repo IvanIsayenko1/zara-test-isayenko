@@ -8,7 +8,7 @@ import x from "@/assets/icons/x.svg";
 import { useLoading } from "@/context/loading-context";
 import { useProducts } from "@/context/products-context";
 import { useDebouncedCallback } from "@/hooks/use-debounce";
-import { fetchProducts } from "@/services/products";
+import { searchProducts } from "@/services/search-products";
 
 import "./filter-input.css";
 
@@ -17,9 +17,9 @@ export function FilterInput() {
   const { setProducts } = useProducts();
   const { setLoadingProgress } = useLoading();
 
-  const searchProducts = useDebouncedCallback(async (search: string) => {
+  const debouncedSearchProducts = useDebouncedCallback(async (search: string) => {
     setLoadingProgress(100);
-    const products = await fetchProducts({ search });
+    const products = await searchProducts(search);
     setLoadingProgress(0);
     setProducts(products);
   }, 500);
@@ -27,9 +27,9 @@ export function FilterInput() {
   const handleChange = useCallback(
     (value: string) => {
       setFilterValue(value);
-      searchProducts(value);
+      debouncedSearchProducts(value);
     },
-    [searchProducts]
+    [debouncedSearchProducts]
   );
 
   return (
