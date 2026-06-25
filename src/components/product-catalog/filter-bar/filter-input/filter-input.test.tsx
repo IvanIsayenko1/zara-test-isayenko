@@ -27,6 +27,16 @@ const mockedSearchProducts = vi.mocked(searchProducts);
 const setProducts = vi.fn();
 const setLoadingProgress = vi.fn();
 
+function createDeferredProducts() {
+  let resolve!: (products: typeof mockProducts) => void;
+
+  const promise = new Promise<typeof mockProducts>((promiseResolve) => {
+    resolve = promiseResolve;
+  });
+
+  return { promise, resolve };
+}
+
 async function advanceDebounce() {
   await act(async () => {
     vi.advanceTimersByTime(500);
@@ -69,7 +79,7 @@ describe("FilterInput", () => {
 
     await advanceDebounce();
 
-    expect(mockedSearchProducts).toHaveBeenCalledWith("samsung");
+    expect(mockedSearchProducts).toHaveBeenCalledWith("samsung", expect.any(AbortSignal));
     expect(setProducts).toHaveBeenCalledWith(mockProducts);
   });
 
@@ -90,7 +100,41 @@ describe("FilterInput", () => {
     await advanceDebounce();
 
     expect(mockedSearchProducts).toHaveBeenCalledTimes(1);
-    expect(mockedSearchProducts).toHaveBeenCalledWith("");
+    expect(mockedSearchProducts).toHaveBeenCalledWith("", expect.any(AbortSignal));
+    expect(setProducts).toHaveBeenCalledWith(mockProducts);
+  });
+
+  it("aborts the previous request when a newer search starts", async () => {
+    const firstSearch = createDeferredProducts();
+    const secondSearch = createDeferredProducts();
+
+    mockedSearchProducts
+      .mockReturnValueOnce(firstSearch.promise)
+      .mockReturnValueOnce(secondSearch.promise);
+
+    render(<FilterInput />);
+
+    const input = screen.getByRole("textbox", { name: "Search products" });
+
+    fireEvent.change(input, { target: { value: "iphone" } });
+    await advanceDebounce();
+
+    const firstSignal = mockedSearchProducts.mock.calls[0][1];
+
+    fireEvent.change(input, { target: { value: "samsung" } });
+
+    expect(firstSignal?.aborted).toBe(true);
+
+    await advanceDebounce();
+
+    expect(firstSignal?.aborted).toBe(true);
+
+    await act(async () => {
+      secondSearch.resolve(mockProducts);
+      await secondSearch.promise;
+    });
+
+    expect(setProducts).toHaveBeenCalledTimes(1);
     expect(setProducts).toHaveBeenCalledWith(mockProducts);
   });
 });

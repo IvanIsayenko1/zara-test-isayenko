@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import Image from "next/image";
 
@@ -14,19 +14,46 @@ import "./filter-input.css";
 
 export function FilterInput() {
   const [filterValue, setFilterValue] = useState("");
+  const searchAbortControllerRef = useRef<AbortController | null>(null);
   const { setProducts } = useProducts();
   const { setLoadingProgress } = useLoading();
 
   const debouncedSearchProducts = useDebouncedCallback(async (search: string) => {
+    searchAbortControllerRef.current?.abort();
+
+    const abortController = new AbortController();
+    searchAbortControllerRef.current = abortController;
+
     setLoadingProgress(100);
-    const products = await searchProducts(search);
-    setLoadingProgress(0);
-    setProducts(products);
+
+    try {
+      const products = await searchProducts(search, abortController.signal);
+
+      if (!abortController.signal.aborted) {
+        setProducts(products);
+      }
+    } catch (error) {
+      if (!(error instanceof DOMException && error.name === "AbortError")) {
+        throw error;
+      }
+    } finally {
+      if (searchAbortControllerRef.current === abortController) {
+        searchAbortControllerRef.current = null;
+        setLoadingProgress(0);
+      }
+    }
   }, 500);
+
+  useEffect(() => {
+    return () => {
+      searchAbortControllerRef.current?.abort();
+    };
+  }, []);
 
   const handleChange = useCallback(
     (value: string) => {
       setFilterValue(value);
+      searchAbortControllerRef.current?.abort();
       debouncedSearchProducts(value);
     },
     [debouncedSearchProducts]
