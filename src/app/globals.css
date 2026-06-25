@@ -82,6 +82,7 @@ main {
 @media (width <= 768px) {
   .product-error__actions,
   .product-error__actions .button {
+    margin-top: 1px;
     width: 100%;
   }
 }

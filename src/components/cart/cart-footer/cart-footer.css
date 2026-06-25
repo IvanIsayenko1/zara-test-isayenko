@@ -24,11 +24,6 @@
   gap: 12px;
 }
 
-.cart-footer__mobile__end > * {
-  flex: 1;
-  min-width: 0;
-}
-
 .cart-footer__mobile__button {
   width: 100% !important;
 }

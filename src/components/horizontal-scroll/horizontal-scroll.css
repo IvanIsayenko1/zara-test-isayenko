@@ -6,6 +6,7 @@
   width: 100%;
   overflow: auto hidden;
   scrollbar-width: none;
+  padding-bottom: 1px;
 }
 
 .horizontal-scroll__viewport::-webkit-scrollbar {
